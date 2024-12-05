@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+
+{% block titulo %}
 	<title>Página inicial</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/static/estilos.css">
-</head>
-<body>
-	<h1>Página inicial</h1>
-	<p><a href="/saudacao">Este link</a> leva para a rota /saudacao</p>
-</body>
-</html>
+{% endblock %}
+
+{% block conteudo %}
+	<h1>{{ titulo }}</h1>
+	<p>{{ conteudo }}</p>
+{% endblock %}

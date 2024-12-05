@@ -1,7 +1,7 @@
 # Importação da classe Flask a partir do módulo flask
 
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template
+from classes.curso import Curso
 
 # Definição do objeto que representa a aplicação
 
@@ -12,30 +12,29 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    titulo = 'Desenvolvimento Web é Legal'
+    conteudo = 'Olha que legal, agora sabemos criar páginas dinâmicas' 
+    return render_template('index.html', titulo=titulo, conteudo=conteudo)
 
-# Cria a rota /saudacao, acessível a partir de : http://127.0.0.1:5000/saudacao
+# Cria a rota /cursos, acessível a partir de : http://127.0.0.1:5000/cursos
 
-@app.route('/saudacao')
-def saudacao():
-    return render_template('saudacao.html')
-
-@app.route("/curso")
+@app.route("/cursos")
 def curso():
-    return render_template('cursos.html')
+    lista_de_cursos = ['Desenvolvimento Web', 'Programação Orientada a Objetos', 'Banco de Dados']
+    return render_template('cursos.html', lista=lista_de_cursos)
 
 @app.route('/curso/<nome>')
 def curso_por_nome(nome):
     if nome == 'devweb':
-        return render_template('curso_devweb.html')
+        info = Curso("Desenvolvimento Web", "Disciplina que lida com as tecnologias da web", ['HTML', 'CSS','JavaScript'], 2)
+        return render_template("info_curso.html", objeto=info)
     elif nome == 'poo':
-        return render_template('curso_poo.html')
+        info = Curso("Progrmação Orientada a Objetos", "Disciplina que nos ensina o paradigama orientado a objetos", ['Dicionários', 'Tratamento de exceções','Classes','Herança'], 1)
+        return render_template("info_curso.html", objeto=info)
     else:
-        return "Curso inexistente"
-    
-@app.route('/curso/<nome>/<int:ano>')
-def curso_com_dois_parametros(nome, ano):
-   return "Rota de demonstração que recebe dois valores: nome={0} e ano={1}".format(nome, ano)
+        nome == 'db'
+        info= Curso("Banco de Dados", "Este curso ainda está em construção. Estamos trabalhando para oferecer o melhor curso de Banco de Dados a você!", ['MER', 'DER', 'SGBD', 'DDL', 'DML', 'DQL'], 2)
+        return render_template("info_curso.html", objeto=info) 
 
 # Inicialização do servidor
 

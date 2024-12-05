@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block titulo %} {% endblock %}
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/static/estilos.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="/">Página inicial</a> |
+			<a href="/cursos">Cursos disponíveis</a> |
+			<a href="/curso/devweb">Desenvolvimento Web</a> |
+			<a href="/curso/poo">Programação Orientada a Objetos</a> |
+			<a href="/curso/db">Banco de dados</a>
+		</nav>
+	</header>
+	<main>
+		{% block conteudo %} {% endblock %}
+	</main>
+	<footer>
+		<p>Rodapé do Projeto de demonstração</p>
+	</footer>
+</body>
+</html>
